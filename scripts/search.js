@@ -1,13 +1,16 @@
 
+import { apiCall, appendArticles } from "/scripts/main.js";
+
+console.log("kamal");
 
 
-import sidebar from "/components/sidebar.js";
-let navbar = document.querySelector("#sidebar");
-navbar.innerHTML = sidebar();
+let x = localStorage.getItem("searchterm");
 
-  function storeSearchterm(term) {
-      
-      
-      
-      export default storeSearchterm
-    }
+console.log(x);
+
+let url = `https://shrouded-earth-23381.herokuapp.com/api/search/?q=${x}`;
+
+let data= apiCall(url)
+console.log(data);
+
+console.log(url);

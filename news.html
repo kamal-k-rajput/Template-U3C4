@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css">
   </head>
 
   <body>
@@ -27,4 +28,23 @@
   import sidebar from "/components/sidebar.js";
   let navbar = document.querySelector("#sidebar");
 navbar.innerHTML = sidebar();
+</script>
+
+<script>
+let article = JSON.parse(localStorage.getItem("article"));
+let main = document.querySelector("#main");
+let div = document.createElement("div");
+div.setAttribute("id", "news_card");
+let img = document.createElement("img");
+img.setAttribute("id","news_img")
+img.src = article.urlToImage
+let title = document.createElement("h2");
+title.textContent = article.title
+let discription = document.createElement("div");
+discription.textContent = article.description;
+
+div.append(img,title,discription);
+main.append(div);
+console.log(article);
+
 </script>

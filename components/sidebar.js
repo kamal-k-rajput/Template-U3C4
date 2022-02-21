@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 function sidebar() {
   return `<div>News</div>
         <div>
