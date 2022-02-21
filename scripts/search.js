@@ -1,7 +1,13 @@
-function storeSearchterm(term) {
 
 
 
-}
+import sidebar from "/components/sidebar.js";
+let navbar = document.querySelector("#sidebar");
+navbar.innerHTML = sidebar();
 
-export default storeSearchterm
+  function storeSearchterm(term) {
+      
+      
+      
+      export default storeSearchterm
+    }
