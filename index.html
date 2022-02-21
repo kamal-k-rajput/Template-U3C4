@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css" />
   </head>
 
   <body>
@@ -24,58 +24,27 @@
   </body>
 </html>
 
-<script>
-  // let sidebar = document.querySelector("#sidebar");
-  // sidebar.addEventListener("keypress", (e) => {
-  //   if ((e.code = "Enter")) {
-  //     getdata();
-  //   }
-  // });
+<script type="module">
 
-  //   async function getdata () {
+import { apiCall, appendArticles } from "/scripts/main.js";
+    import sidebar from "/components/sidebar.js";
+  let navbar = document.getElementById("sidebar");
+  navbar.innerHTML = sidebar();
 
-  //  try {
-  //     let url = `https://shrouded-earth-23381.herokuapp.com/api/headlines/india`;
+  let url = `https://shrouded-earth-23381.herokuapp.com/api/headlines/india`;
 
-  //     let res = await fetch(url);
-  //     let data = await res.json();
-  //     console.log(data);
-  //     let parent = document.getElementById("main");
-  //       showData(data,parent)
-  //     } catch (e) {
-  //       console.log("error:" ,e);
-  //     }
-  //   }
+  let searchbar = document.getElementById("searchbar");
+  searchbar.addEventListener("keypress", (e) => {
+    let value = searchbar.value;
+    if (e.code === "Enter" && value === "cricket") {
+      localStorage.setItem("searchterm", value);
+      window.location.href = "search.html";
+    }
+    console.log(e);
+  });
 
-  // function showData(data,parent){
-
-  //   data.forEach((el)=>{
-  //    let card = makeCard(el);
-  //    card.addEventListener("click",()=>{
-  //     localStorage.setItem("article",JSON.stringify(el));
-  //     console.log("clicked on news");
-  //    })
-  //     parent.append(card);
-
-  //     console.log(el.urlToImage);
-  //   })
-  // }
-
-  // function makeCard(el){
-  //   let div = document.createElement("div");
-
-  //   let p = document.createElement("p")
-  //   //  p.textContent = el.description;
-
-  //    let img = document.createElement("img");
-  //   img.src = el.urlToImage;
-
-  //   let title = document.createElement("h3");
-  //   title.setAttribute("id","title");
-  //   title.innerHTML = el.title;
-
-  //   div.append(img,title);
-  //   return div;
-  // }
+  let x = await apiCall(url);
+  let main = document.getElementById("main");
+  appendArticles(x, main);
 </script>
 <script type="module" src="./scripts/main.js"></script>
